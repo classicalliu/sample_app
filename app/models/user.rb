@@ -10,17 +10,17 @@ class User < ActiveRecord::Base
             uniqueness: {case_sensitive: false}
 
   has_secure_password
-  validates :password, length: {minimum: 6}
+  validates :password, length: {minimum: 6}, allow_blank: true
 
   # 返回制定字符串的哈希摘要
-  def User.digest(string)
+  def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
         BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
 
   # 返回一个随机令牌
-  def User.new_token
+  def self.new_token
     SecureRandom.urlsafe_base64
   end
 
