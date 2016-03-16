@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :microposts, dependent: :destroy
+
   attr_accessor :remember_token, :activation_token, :reset_token
 
   before_save :downcase_email
@@ -68,6 +70,12 @@ class User < ActiveRecord::Base
 
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  # 实现动态流原型
+  # 完整的实现参见第12章
+  def feed
+    Micropost.where("user_id = ?", id)
   end
 
   private

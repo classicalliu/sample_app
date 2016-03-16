@@ -1,12 +1,19 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 
 gem 'bcrypt', '3.1.7'
 
 gem 'faker', '1.4.2'
+
+gem 'carrierwave', '0.10.0'
+
+gem 'mini_magick', '3.8.0'
+
+gem 'fog', '1.32.0'
+
+gem 'net-ssh'
 
 gem 'will_paginate', '3.0.7'
 
